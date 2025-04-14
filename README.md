@@ -27,7 +27,6 @@ A modern web application that analyzes and extracts structured data from resumes
 - [Docker Compose](https://docs.docker.com/compose/install/)
 - API Keys:
   - OpenAI/Azure AI API Key
-  - Pinecone API Key
   - MongoDB connection string (or local MongoDB instance)
 
 ## Project Structure
@@ -58,9 +57,7 @@ resume-analyzer/
 2. Configure environment variables in the `.env` file:
    ```
    GITHUB_TOKEN=your_github_token_here
-   TEXT_EMBEDDING_TOKEN=your_text_embedding_token_here
    MONGODB_URI=mongodb://localhost:27017/resume-processor
-   PINECONE_API_KEY=your_pinecone_api_key_here
    ```
 3. Make sure Docker and Docker Compose are installed on your system
 4. Navigate to the project root directory
@@ -95,7 +92,7 @@ The application uses the following environment variables:
 1. **Backend Container**:
    - Python Flask application
    - Exposes port 5000
-   - Connects to MongoDB and Pinecone
+   - Connects to MongoDB
    - Includes health check endpoints
 
 2. **Frontend Container**:
