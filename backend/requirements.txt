@@ -1,0 +1,13 @@
+flask
+werkzeug
+flask-cors
+PyPDF2
+python-dotenv
+openai
+python-multipart
+pymongo
+pinecone
+requests
+azure-ai-inference
+azure-core
+dnspython

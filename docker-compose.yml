@@ -1,0 +1,37 @@
+version: '3.8'
+
+services:
+  # Backend service
+  backend:
+    build:
+      context: ./backend
+    container_name: resume-analyzer-backend
+    restart: unless-stopped
+    environment:
+      - MONGODB_URI=${MONGODB_URI}
+      - GITHUB_TOKEN=${GITHUB_TOKEN}
+      - TEXT_EMBEDDING_TOKEN=${TEXT_EMBEDDING_TOKEN}
+      - PINECONE_API_KEY=${PINECONE_API_KEY}
+    volumes:
+      - ./backend:/app
+    ports:
+      - "5000:5000"
+    networks:
+      - resume-analyzer-network
+
+  # Frontend service
+  frontend:
+    build:
+      context: ./frontend
+    container_name: resume-analyzer-frontend
+    restart: unless-stopped
+    ports:
+      - "80:80"
+    networks:
+      - resume-analyzer-network
+    depends_on:
+      - backend
+
+networks:
+  resume-analyzer-network:
+    driver: bridge
